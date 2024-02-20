@@ -172,14 +172,6 @@ RegisterNetEvent('police:client:policeAlert', function(coords, text, camId)
     end
 end)
 
-RegisterNetEvent('police:client:SendToJail', function(time)
-    TriggerServerEvent('police:server:SetHandcuffStatus', false)
-    isEscorted = false
-    ClearPedTasks(cache.ped)
-    DetachEntity(cache.ped, true, false)
-    TriggerEvent('prison:client:Enter', time)
-end)
-
 RegisterNetEvent('police:client:SendPoliceEmergencyAlert', function()
     TriggerServerEvent('police:server:policeAlert', Lang:t('info.officer_down', {lastname = QBX.PlayerData.charinfo.lastname, callsign = QBX.PlayerData.metadata.callsign}))
     TriggerServerEvent('hospital:server:ambulanceAlert', Lang:t('info.officer_down', {lastname = QBX.PlayerData.charinfo.lastname, callsign = QBX.PlayerData.metadata.callsign}))
